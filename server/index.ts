@@ -61,7 +61,6 @@ wss.on('connection', (ws: WebSocket) => {
 //     }, 1000);
 // });
 
-// //start our server
 // server.listen(7777, () => {
 //     console.log(`Server started on port 7777 :)`);
 // });
