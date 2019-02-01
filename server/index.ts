@@ -4,26 +4,27 @@ import * as WebSocket from 'ws';
 import * as path from "path";
 
 // ------------ SIMPLE WSS -----------
-// const wss = new WebSocket.Server({ port: 7777 }, () => {
-//     console.log("WSS live");
-// });
+const wss = new WebSocket.Server({ port: 7777 }, () => {
+    console.log("WSS live");
+});
 
-// wss.on('connection', (ws: WebSocket) => {
+wss.on('connection', (ws: WebSocket) => {
 
-//     ws.on('message', (message: string) => {
-//         console.log(`Received: ${message}`);
-//         ws.send(JSON.stringify({content: message}));
-//     });
+    ws.on('message', (message: string) => {
+        console.log(`Received: ${message}`);
+        ws.send(JSON.stringify({ content: message }));
+    });
 
-//     ws.send(JSON.stringify({content: "Hello from WS server"}));
-//     let count = 0;
-//     setInterval(() => {
-//         ++count;
-//         if (ws.readyState !== 3) {
-//             ws.send(`MSG: ${count}`);
-//         }
-//     }, 1000);
-// });
+    ws.send(JSON.stringify({ content: "Hello from WS server" }));
+    
+    let count = 0;
+    setInterval(() => {
+        ++count;
+        if (ws.readyState !== 3) {
+            ws.send(JSON.stringify({content: `MSG: ${count}`}));
+        }
+    }, 1000);
+});
 
 
 // -------------- WSS + EXPRESS
